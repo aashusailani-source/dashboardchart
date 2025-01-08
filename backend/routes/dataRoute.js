@@ -1,6 +1,6 @@
 const { getAllData } = require('../controllers/data.controller');
-const router = require('express').Router();
+const express = require('express')
+const router = express.Router();
 
 router.get('/get-alldata', getAllData);
-
 module.exports = router;
