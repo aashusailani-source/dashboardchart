@@ -10,7 +10,7 @@ const LineChartPage = () => {
   // Fetch data and filters from Redux store
   const data = useSelector((state) => state.data.data); // Access data from Redux
 
-  console.log("full data", data);
+  // console.log("full data", data);
   const filters = useSelector((state) => state.filters.filters); // Access filters from Redux
 
   // Apply filters to the data 
