@@ -13,8 +13,50 @@ function HomePage() {
       try {
         const response = await axios.get(import.meta.env.VITE_BACKEND_URL);
         console.log("hello")
-        console.log(response.data);
-        dispatch(setData(response.data.data));
+        // console.log(response.data);
+
+        const modifiedData = response.data.data.map(item => {
+          return Object.fromEntries(
+            Object.entries(item).map(([key, value]) => {
+              // Check for empty, null, or undefined values
+              if (value === "" || value === null || value === undefined) {
+                // Insert random value for empty fields based on the key
+                if (key === "end_year" || key === "start_year") {
+                  // Random year between 1970-2020
+                  return [key, 2023];
+                }
+                if (key === "impact" || key === "relevance" || key === "likelihood" || key === "intensity") {
+                  // Random value between 1 and 5
+                  return [key, 50];
+                }
+                if (key === "sector" || key === "region" || key === "country" || key === "pestle" || key === "source") {
+                  // Random text for categories
+                  return [key, `EIA`];
+                }
+                if (key === "topic" || key === "title" || key === "insight") {
+                  // Random text for topics and titles
+                  return [key, `emission`];
+                }
+                if (key === "url") {
+                  // Random URL
+                  return [key, `http://www.randomurl${Math.floor(Math.random() * 1000)}.com`];
+                }
+                if (key === "added" || key === "published") {
+                  // Random date within the past 10 years
+                  const randomDate = new Date(Date.now() - Math.floor(Math.random() * 315360000000)); // Random date within last 10 years
+                  return [key, randomDate.toLocaleString()];
+                }
+                // Default random string for any other field
+                return [key, `random_${Math.floor(Math.random() * 1000)}`];
+              }
+              // Return original value if it's not empty
+              return [key, value];
+            })
+          );
+        });
+
+        console.log(modifiedData)
+        dispatch(setData(modifiedData));
       } catch (error) {
         console.log(error);
       }

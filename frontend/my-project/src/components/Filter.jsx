@@ -7,10 +7,11 @@ function Filter() {
 
   // Access filter state from Redux
   const filters = useSelector((state) => state.filters.filters);
+  console.log("instarting", filters);
 
   // Example dropdown options (replace with your actual data)
-  const endYearOptions = ["2018", "2019", "2020", "2021", "2022", "2023", "2024"];
-  const topicsOptions = ["Manufacturing", "Government", "Energy", "Environment", "Retail"];
+  const endYearOptions = ["2017", "2018", "2019", "2020", "2021", "2022", "2016"];
+  const topicsOptions = ["oil", "market", "gas", "consumption", "gdp", "export"];
   const regionOptions = ["Northern America", "Europe", "Asia", "Africa"];
   const countryOptions = [
     "United States of America",
@@ -26,7 +27,9 @@ function Filter() {
   // Handle filter changes
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     dispatch(setFilters({ ...filters, [name]: value })); // Update filters in Redux
+    console.log("after dispatch " ,filters);
   };
 
   // Handle reset filters
@@ -73,8 +76,8 @@ function Filter() {
               Topics
             </label>
             <select
-              name="topics"
-              value={filters.topics}
+              name="topic"
+              value={filters.topic}
               onChange={handleFilterChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >

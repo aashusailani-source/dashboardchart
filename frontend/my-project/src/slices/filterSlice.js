@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   filters: {
-    end_year: "",
-    topics: "",
+    end_year: "2018",
+    topic: "",
     region: "",
     country: "",
     pestle: "",
