@@ -7,6 +7,8 @@ const { dbConnect } = require('./connection/dbConnect');
 
 app.use(express.json());
 app.use(cors());
+const fs = require("fs");
+const path = require("path");
 
 app.use('/api', dataRoutes)
 

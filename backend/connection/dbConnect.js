@@ -11,9 +11,9 @@ exports.dbConnect = async () => {
 
         if(!existingData){
             await DataModel.insertMany(jsonData);
-            console.log("Data inserted successfully");
+            console.log("Data inserted successfully" , jsonData.length);
         }else{
-            console.log("Data already Exists");
+            console.log("Data already Exists", jsonData.length);
         }
 
     } catch (error) {
