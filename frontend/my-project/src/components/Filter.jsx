@@ -11,7 +11,7 @@ function Filter() {
 
   // Example dropdown options (replace with your actual data)
   const endYearOptions = ["2017", "2018", "2019", "2020", "2021", "2022", "2016"];
-  const topicsOptions = ["oil", "market", "gas", "consumption", "gdp", "export"];
+  const topicsOptions = ["oil", "gas", "consumption", "gdp", "export"];
   const regionOptions = ["Northern America", "Europe", "Asia", "Africa"];
   const countryOptions = [
     "United States of America",
